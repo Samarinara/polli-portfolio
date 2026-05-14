@@ -45,6 +45,16 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+    --animate-ring-pulse: ring-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ring-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 2px var(--color-primary);
+  }
+  50% {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-primary) 40%, transparent);
+  }
 }
 
 :root {
@@ -125,5 +135,7 @@
     }
   html {
     @apply font-serif;
+    scrollbar-gutter: stable;
     }
 }
+
