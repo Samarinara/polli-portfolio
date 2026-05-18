@@ -53,6 +53,16 @@ export const credentials: Credential[] = [
   },
   {
     id: "5",
+    title: "The Nex Look Portfolio",
+    description:
+      "A bold site to showcase the work of makeup artist Nex Zimelstern. Built with Next JS, UploadThing, and Turso.",
+    category: "project",
+    href: "https://thenexlook.vercel.app/",
+    completed: true,
+    date: "2026",
+  },
+  {
+    id: "6",
     title: "AI Model Training",
     description:
       "I am experimenting in training smaller language models using pytorch that can run on common conusmer hardware.",
@@ -62,7 +72,7 @@ export const credentials: Credential[] = [
     href: "https://github.com/Samarinara/small-language-training",
   },
   {
-    id: "6",
+    id: "7",
     title: "University of Calgary Course Web",
     description:
       "An unofficial tool to help engineering students at the University of Calgary learn their course requirements.",
@@ -72,7 +82,7 @@ export const credentials: Credential[] = [
     date: "2026",
   },
   {
-    id: "7",
+    id: "8",
     title: "Cyber Patriot Platinum Tier",
     description:
       "Reached Platinum Tier in CyberPatriot for two consecutive years, placing among the top 10% of Canadian teams.",
@@ -81,7 +91,7 @@ export const credentials: Credential[] = [
     date: "2024 - 2025",
   },
   {
-    id: "8",
+    id: "9",
     title: "Lilypad Browser",
     description:
       "An early stage web browser built with Qt and C++ that builds on top of the search features in polli.page. It focuses on clean Ui and local AI models.",
@@ -91,7 +101,7 @@ export const credentials: Credential[] = [
     date: "2026 - present",
   },
   {
-    id: "9",
+    id: "10",
     title: "Young Defenders of the North Winner",
     description:
       "First place in the Young Defenders of the North Hack-a-thon, focused on digital forensics and real-time adaptaility.",
