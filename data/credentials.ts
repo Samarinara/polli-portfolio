@@ -109,4 +109,14 @@ export const credentials: Credential[] = [
     completed: true,
     date: "2025",
   },
+  {
+    id: "11",
+    title: "Beagle",
+    description:
+      "A small web interface for reading through SEC filings with EDGAR. There are also Ai features to extract data in cleaner formats.",
+    category: "project",
+    completed: false,
+    href: "https://beagle-edgar.vercel.app/",
+    date: "2026 - present",
+  },
 ]
