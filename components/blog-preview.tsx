@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { FiEdit3, FiExternalLink, FiChevronRight } from "react-icons/fi"
+import { FiEdit3 } from "react-icons/fi"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
@@ -61,8 +61,8 @@ const containerVariants = {
     opacity: 1,
     height: "auto",
     transition: {
-      height: { duration: 0.3, ease: "easeOut" },
-      opacity: { duration: 0.25, ease: "easeOut" },
+      height: { duration: 0.3, ease: "easeOut" as const },
+      opacity: { duration: 0.25, ease: "easeOut" as const },
       staggerChildren: 0.05,
     },
   },
@@ -70,8 +70,8 @@ const containerVariants = {
     opacity: 0,
     height: 0,
     transition: {
-      height: { duration: 0.25, ease: "easeIn" },
-      opacity: { duration: 0.15, ease: "easeIn" },
+      height: { duration: 0.25, ease: "easeIn" as const },
+      opacity: { duration: 0.15, ease: "easeIn" as const },
     },
   },
 }
@@ -82,24 +82,31 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.25, ease: "easeOut" },
+    transition: { duration: 0.25, ease: "easeOut" as const },
   },
   exit: {
     opacity: 0,
     scale: 0.96,
     y: -8,
-    transition: { duration: 0.15, ease: "easeIn" },
+    transition: { duration: 0.15, ease: "easeIn" as const },
   },
 }
 
 function BlogSkeleton() {
   return (
     <div className="flex flex-col gap-2">
-      {[1, 2, 3].map((i) => (
+      {[1, 2].map((i) => (
         <div key={i} className="flex flex-col gap-1.5 rounded-xl px-4 py-3.5">
-          <div className="h-4 w-3/4 animate-pulse rounded bg-muted" />
-          <div className="h-3 w-full animate-pulse rounded bg-muted/60" />
-          <div className="h-3 w-1/4 animate-pulse rounded bg-muted/40" />
+          <div className="flex items-center gap-2">
+            <div className="h-5 w-48 animate-pulse rounded-md bg-muted" />
+            <div className="size-4 animate-pulse rounded-sm bg-muted/30" />
+            <div className="h-5 w-20 animate-pulse rounded-full bg-muted/40" />
+          </div>
+          <div className="space-y-1.5">
+            <div className="h-3.5 w-full animate-pulse rounded-md bg-muted/60" />
+            <div className="h-3.5 w-3/4 animate-pulse rounded-md bg-muted/60" />
+          </div>
+          <div className="h-3 w-16 animate-pulse self-end rounded-md bg-muted/30" />
         </div>
       ))}
     </div>
@@ -112,10 +119,16 @@ export function BlogPreview() {
   const [loading, setLoading] = useState(false)
   const fetchedRef = useRef(false)
 
+  const handleToggle = () => {
+    if (!isOpen && !fetchedRef.current) {
+      setLoading(true)
+    }
+    setIsOpen((p) => !p)
+  }
+
   useEffect(() => {
     if (!isOpen || fetchedRef.current) return
     fetchedRef.current = true
-    setLoading(true)
 
     Promise.all([
       fetch(
@@ -157,7 +170,7 @@ export function BlogPreview() {
   return (
     <div className="flex flex-col gap-2">
       <motion.button
-        onClick={() => setIsOpen((p) => !p)}
+        onClick={handleToggle}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className={cn(
@@ -173,12 +186,13 @@ export function BlogPreview() {
         >
           <FiEdit3 className="size-4" />
         </motion.div>
-        <span>{isOpen ? "Close Blog" : "Read my Blog"}</span>
+        <span>{isOpen ? "Ignore my Blog" : "Read my Blog"}</span>
       </motion.button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            layout
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -210,6 +224,7 @@ export function BlogPreview() {
                 {loading ? (
                   <motion.div
                     key="loading"
+                    layout
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -219,6 +234,7 @@ export function BlogPreview() {
                 ) : !blogData || blogData.posts.length === 0 ? (
                   <motion.p
                     key="empty"
+                    layout
                     variants={itemVariants}
                     initial="hidden"
                     animate="visible"
@@ -230,6 +246,7 @@ export function BlogPreview() {
                 ) : (
                   <motion.div
                     key="content"
+                    layout
                     className="flex flex-col gap-2"
                     variants={{
                       visible: {

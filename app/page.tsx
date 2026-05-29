@@ -19,10 +19,9 @@ const pageVariants = {
 }
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 12 },
+  initial: { opacity: 0 },
   animate: {
     opacity: 1,
-    y: 0,
     transition: { duration: 0.35, ease: "easeOut" as const },
   },
 }
@@ -93,16 +92,17 @@ export default function Page() {
       initial="initial"
       animate="animate"
     >
-      <motion.div variants={fadeInUp}>
+      <motion.div layout variants={fadeInUp}>
         <PortfolioHeader />
       </motion.div>
-      <motion.div variants={fadeInUp}>
+      <motion.div layout variants={fadeInUp}>
         <Separator />
       </motion.div>
-      <motion.div variants={fadeInUp}>
+      <motion.div layout variants={fadeInUp}>
         <FilterBar active={filter} onChange={setFilter} />
       </motion.div>
       <motion.div
+        layout
         variants={fadeInUp}
         className="flex items-center justify-between text-sm text-muted-foreground"
       >
