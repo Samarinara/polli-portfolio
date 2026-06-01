@@ -48,6 +48,7 @@ export const credentials: Credential[] = [
     description:
       "A minimal payroll tracking app for contractors that logs hours and generates invoices. Built using Next JS",
     category: "project",
+    href: "https://power-hour-mocha.vercel.app/",
     completed: true,
     date: "2020 - 2022",
   },
