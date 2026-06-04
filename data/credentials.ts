@@ -130,4 +130,14 @@ export const credentials: Credential[] = [
     href: "https://beagle-edgar.vercel.app/",
     date: "2026 - present",
   },
+  {
+    id: "12",
+    title: "Corgi",
+    description:
+      "A small web interface for editing a Neo4j database. This is designed to make it simple for non-technical team members to edit the graph data.",
+    category: "project",
+    completed: false,
+    href: "https://open-ridge-e1d146c31a.lakebed.app/",
+    date: "2026 - present",
+  },
 ]
