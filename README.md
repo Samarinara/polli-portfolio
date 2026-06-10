@@ -1,6 +1,6 @@
 # Next.js template
 
-This is a Next.js template with shadcn/ui.
+This might be a Next.js template with shadcn/ui.
 
 ## Adding components
 
