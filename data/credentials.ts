@@ -137,7 +137,7 @@ export const credentials: Credential[] = [
       "A small web interface for editing a Neo4j database. This is designed to make it simple for non-technical team members to edit the graph data.",
     category: "project",
     completed: false,
-    href: "https://open-ridge-e1d146c31a.lakebed.app/",
+    href: "https://corgi.polli.page",
     date: "2026 - present",
   },
 ]
