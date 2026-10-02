@@ -122,7 +122,7 @@ export default function Page() {
             {filtered.length > 0
               ? filtered.map((item) => (
                   <motion.div
-                    key={item.id}
+                    key={credentials.indexOf(item)}
                     layout="position"
                     variants={itemVariants}
                     initial="initial"
