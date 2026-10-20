@@ -101,7 +101,7 @@ export function PortfolioHeader() {
         <ThemeToggle />
       </div>
       <p className="text-base text-muted-foreground">
-        I&apos;m a backend dev and Ui designer living in Calgary.
+        I&apos;m a full stack developer based in Calgary.
       </p>
       <div className="flex shrink-0 gap-1 justify-end">
           <CopyEmailButton email="sam@katevatis.com" />
