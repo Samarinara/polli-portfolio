@@ -45,6 +45,7 @@ export const credentials: Credential[] = [
       "Part of the software team at Schulich on a Chip, a club focused on designing and manufacturing custom processors.",
     category: "experience",
     completed: false,
+    href: "https://schulichonachip.ca/",
     date: "2025 - Present",
   },
   {
