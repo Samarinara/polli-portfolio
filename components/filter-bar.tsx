@@ -16,7 +16,7 @@ interface FilterBarProps {
 
 export function FilterBar({ active, onChange }: FilterBarProps) {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 overflow-scroll scrollbar-none">
       {filters.map((f) => (
         <motion.div
           key={f.value}
