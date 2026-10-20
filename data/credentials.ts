@@ -19,12 +19,20 @@ export const credentials: Credential[] = [
     completed: false,
     date: "2026 - Present",
     href: "https://brownbag.polli.page",
-    highlight: true,
+    highlight: false,
+  },
+  {
+    title: "Bachelor's in Software Engineering",
+    description:
+      "University of Calgary — Socond Year",
+    category: "education",
+    completed: false,
+    date: "2025 - Present",
   },
   {
     title: "polli.page",
     description:
-      "A search engine with a new take on the internet. Get to your destination with no ads, no lag, and no friction",
+      "A search engine that goes to the best site instead of listing results. No ads, no lag, and no friction",
     category: "project",
     completed: true,
     date: "2025 - 2026",
@@ -32,21 +40,30 @@ export const credentials: Credential[] = [
     highlight: false,
   },
   {
-    title: "Bachelor's in Software Engineering",
+    title: "UCalgary Schulich on a Chip Club",
     description:
-      "University of Calgary — Specialized in product development with a minor in Biomedical Engineering",
-    category: "education",
+      "Part of the software team at Schulich on a Chip, a club focused on designing and manufacturing custom processors.",
+    category: "experience",
     completed: false,
     date: "2025 - Present",
   },
   {
     title: "Cargo TUI",
     description:
-      "An terminal user interface for managing Rust projects without memorizing cargo commands. It is written is Rust and uses Ratatui",
+      "A terminal user interface for managing Rust projects without memorizing cargo commands. It is written is Rust and uses Ratatui",
     category: "project",
     href: "https://github.com/Samarinara/cargotui",
     completed: true,
     date: "2026",
+  },
+  {
+    title: "CISCO Endpoint Security Certificate",
+    description:
+      "A 27 hour online course building the skills to secure a network, keep data confidential, and manage IOT devices.",
+    category: "education",
+    href: "https://www.netacad.com/courses/endpoint-security",
+    completed: true,
+    date: "2025",
   },
   {
     title: "Topix",
@@ -75,24 +92,6 @@ export const credentials: Credential[] = [
     date: "2026 - present",
   },
   {
-    title: "AI Model Training",
-    description:
-      "I am experimenting in training smaller language models using pytorch that can run on common conusmer hardware.",
-    category: "project",
-    completed: false,
-    date: "2024 - Present",
-    href: "https://github.com/Samarinara/small-language-training",
-  },
-  {
-    title: "University of Calgary Course Web",
-    description:
-      "An unofficial tool to help engineering students at the University of Calgary learn their course requirements.",
-    category: "project",
-    href: "https://ucalgary-courseweb.vercel.app/",
-    completed: true,
-    date: "2026",
-  },
-  {
     title: "Young Defenders of the North Winner",
     description:
       "First place in the Young Defenders of the North Hack-a-thon, focused on digital forensics and real-time adaptaility.",
@@ -105,8 +104,8 @@ export const credentials: Credential[] = [
     description:
       "A small web interface for reading through SEC filings with EDGAR. There are also Ai features to extract data in cleaner formats.",
     category: "project",
-    completed: false,
+    completed: true,
     href: "https://beagle-edgar.vercel.app/",
-    date: "2026 - present",
+    date: "2026",
   },
 ]
