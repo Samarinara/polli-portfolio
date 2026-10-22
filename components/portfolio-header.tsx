@@ -5,7 +5,6 @@ import { SiBluesky } from "react-icons/si"
 import { motion, AnimatePresence } from "framer-motion"
 
 import { ThemeToggle } from "@/components/theme-provider"
-import { BlogPreview } from "@/components/blog-preview"
 
 function SocialLink({
   href,
@@ -91,7 +90,13 @@ function CopyEmailButton({ email }: { email: string }) {
   )
 }
 
-export function PortfolioHeader() {
+export function PortfolioHeader({
+  writing,
+  onToggleWriting,
+}: {
+  writing: boolean
+  onToggleWriting: () => void
+}) {
   return (
     <header className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
@@ -103,23 +108,45 @@ export function PortfolioHeader() {
       <p className="text-base text-muted-foreground">
         I&apos;m a full stack developer based in Calgary.
       </p>
-      <div className="flex shrink-0 gap-1 justify-end">
-          <CopyEmailButton email="sam@katevatis.com" />
-          <SocialLink
-            href="https://github.com/Samarinara"
-            label="@Samarinara"
-            icon={<FaGithub className="size-4 text-muted-foreground" />}
-          />
-          <SocialLink
-            href="https://samarinara.bsky.social"
-            label="@samarinara.bsky.social"
-            icon={<SiBluesky className="size-4 text-muted-foreground" />}
-          />
-          <SocialLink
-            href="https://x.com/_samarinara"
-            label="@_samarinara"
-            icon={<FaTwitter className="size-4 text-muted-foreground" />}
-          />
+      <div className="flex flex-wrap items-center justify-end gap-1">
+        <motion.button
+          type="button"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.97 }}
+          onClick={onToggleWriting}
+          aria-pressed={writing}
+          aria-controls="portfolio-items"
+          className="mr-2 min-w-36 rounded-md border border-primary px-3 py-1 text-sm text-primary transition-colors hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={String(writing)}
+              className="block"
+              initial={{ opacity: 0, y: 3 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -3 }}
+              transition={{ duration: 0.12 }}
+            >
+              {writing ? "See what I do" : "Read what I write"}
+            </motion.span>
+          </AnimatePresence>
+        </motion.button>
+        <CopyEmailButton email="sam@katevatis.com" />
+        <SocialLink
+          href="https://github.com/Samarinara"
+          label="@Samarinara"
+          icon={<FaGithub className="size-4 text-muted-foreground" />}
+        />
+        <SocialLink
+          href="https://samarinara.bsky.social"
+          label="@samarinara.bsky.social"
+          icon={<SiBluesky className="size-4 text-muted-foreground" />}
+        />
+        <SocialLink
+          href="https://x.com/_samarinara"
+          label="@_samarinara"
+          icon={<FaTwitter className="size-4 text-muted-foreground" />}
+        />
       </div>
     </header>
   )
