@@ -191,7 +191,7 @@ export default function Page() {
           <AnimatePresence mode="popLayout">
             {filtered.length > 0 || (writing && posts.length > 0) ? (
               Array.from(
-                { length: Math.max(filtered.length, posts.length) },
+                { length: writing ? sortedPosts.length : filtered.length },
                 (_, index) => {
                   const item = filtered[index]
                   return (
