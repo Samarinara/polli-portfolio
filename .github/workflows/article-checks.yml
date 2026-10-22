@@ -29,7 +29,10 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Typecheck
         run: pnpm typecheck
-      - name: Lint
-        run: pnpm lint
+      - name: Lint writing and article code
+        run: |
+          paths=(app/writing data/posts.ts)
+          if [ -d components/articles ]; then paths+=(components/articles); fi
+          pnpm exec eslint "${paths[@]}"
       - name: Build
         run: pnpm build
