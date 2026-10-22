@@ -5,7 +5,6 @@ import { SiBluesky } from "react-icons/si"
 import { motion, AnimatePresence } from "framer-motion"
 
 import { ThemeToggle } from "@/components/theme-provider"
-import { BlogPreview } from "@/components/blog-preview"
 
 function SocialLink({
   href,
@@ -91,7 +90,13 @@ function CopyEmailButton({ email }: { email: string }) {
   )
 }
 
-export function PortfolioHeader() {
+export function PortfolioHeader({
+  writing,
+  onToggleWriting,
+}: {
+  writing: boolean
+  onToggleWriting: () => void
+}) {
   return (
     <header className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
@@ -103,23 +108,32 @@ export function PortfolioHeader() {
       <p className="text-base text-muted-foreground">
         I&apos;m a full stack developer based in Calgary.
       </p>
-      <div className="flex shrink-0 gap-1 justify-end">
-          <CopyEmailButton email="sam@katevatis.com" />
-          <SocialLink
-            href="https://github.com/Samarinara"
-            label="@Samarinara"
-            icon={<FaGithub className="size-4 text-muted-foreground" />}
-          />
-          <SocialLink
-            href="https://samarinara.bsky.social"
-            label="@samarinara.bsky.social"
-            icon={<SiBluesky className="size-4 text-muted-foreground" />}
-          />
-          <SocialLink
-            href="https://x.com/_samarinara"
-            label="@_samarinara"
-            icon={<FaTwitter className="size-4 text-muted-foreground" />}
-          />
+      <div className="flex flex-wrap items-center justify-end gap-1">
+        <button
+          type="button"
+          onClick={onToggleWriting}
+          aria-pressed={writing}
+          aria-controls="portfolio-items"
+          className="mr-2 rounded-md px-2 py-1 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring aria-pressed:text-foreground aria-pressed:underline"
+        >
+          read what i write
+        </button>
+        <CopyEmailButton email="sam@katevatis.com" />
+        <SocialLink
+          href="https://github.com/Samarinara"
+          label="@Samarinara"
+          icon={<FaGithub className="size-4 text-muted-foreground" />}
+        />
+        <SocialLink
+          href="https://samarinara.bsky.social"
+          label="@samarinara.bsky.social"
+          icon={<SiBluesky className="size-4 text-muted-foreground" />}
+        />
+        <SocialLink
+          href="https://x.com/_samarinara"
+          label="@_samarinara"
+          icon={<FaTwitter className="size-4 text-muted-foreground" />}
+        />
       </div>
     </header>
   )

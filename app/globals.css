@@ -139,3 +139,19 @@
     }
 }
 
+
+.writing-flip {
+  transform-style: preserve-3d;
+  transition: transform 500ms ease-in-out;
+  transition-delay: var(--flip-delay);
+}
+
+.writing-flip[data-writing="true"] {
+  transform: rotateX(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .writing-flip {
+    transition: none;
+  }
+}
