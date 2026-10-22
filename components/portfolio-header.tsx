@@ -109,15 +109,28 @@ export function PortfolioHeader({
         I&apos;m a full stack developer based in Calgary.
       </p>
       <div className="flex flex-wrap items-center justify-end gap-1">
-        <button
+        <motion.button
           type="button"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.97 }}
           onClick={onToggleWriting}
           aria-pressed={writing}
           aria-controls="portfolio-items"
-          className="mr-2 rounded-md px-2 py-1 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring aria-pressed:text-foreground aria-pressed:underline"
+          className="mr-2 min-w-36 rounded-md border border-primary px-3 py-1 text-sm text-primary transition-colors hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
-          read what i write
-        </button>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={String(writing)}
+              className="block"
+              initial={{ opacity: 0, y: 3 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -3 }}
+              transition={{ duration: 0.12 }}
+            >
+              {writing ? "See what I do" : "Read what I write"}
+            </motion.span>
+          </AnimatePresence>
+        </motion.button>
         <CopyEmailButton email="sam@katevatis.com" />
         <SocialLink
           href="https://github.com/Samarinara"

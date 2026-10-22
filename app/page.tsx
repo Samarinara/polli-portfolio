@@ -8,6 +8,7 @@ import { FilterBar } from "@/components/filter-bar"
 import { TodoItem } from "@/components/todo-item"
 import { WritingFlip } from "@/components/writing-flip"
 import { posts } from "@/data/posts"
+import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { credentials, type CredentialCategory } from "@/data/credentials"
 
@@ -76,6 +77,18 @@ function AnimatedCounter({ value }: { value: number }) {
 
 export default function Page() {
   const [writing, setWriting] = useState(false)
+  const [sort, setSort] = useState<"newest" | "oldest" | "title">("newest")
+  const sortedPosts = useMemo(
+    () =>
+      [...posts].sort((a, b) =>
+        sort === "title"
+          ? a.title.localeCompare(b.title)
+          : sort === "newest"
+            ? b.date.localeCompare(a.date)
+            : a.date.localeCompare(b.date)
+      ),
+    [sort]
+  )
   const [filter, setFilter] = useState<CredentialCategory | "all">("all")
 
   const filtered = useMemo(
@@ -105,9 +118,38 @@ export default function Page() {
         <Separator />
       </motion.div>
       <motion.div layout variants={fadeInUp}>
-        <div inert={writing} className={writing ? "invisible" : undefined}>
-          <FilterBar active={filter} onChange={setFilter} />
-        </div>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={writing ? "writing-controls" : "credential-controls"}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.18 }}
+          >
+            {writing ? (
+              <div role="group" aria-label="Sort posts" className="flex gap-2">
+                {(["newest", "oldest", "title"] as const).map((value) => (
+                  <motion.div key={value} whileTap={{ scale: 0.95 }}>
+                    <Button
+                      variant={sort === value ? "default" : "outline"}
+                      size="sm"
+                      aria-pressed={sort === value}
+                      onClick={() => setSort(value)}
+                    >
+                      {value === "newest"
+                        ? "Newest"
+                        : value === "oldest"
+                          ? "Oldest"
+                          : "Title"}
+                    </Button>
+                  </motion.div>
+                ))}
+              </div>
+            ) : (
+              <FilterBar active={filter} onChange={setFilter} />
+            )}
+          </motion.div>
+        </AnimatePresence>
       </motion.div>
       <motion.div
         layout
@@ -115,16 +157,27 @@ export default function Page() {
         className="flex items-center justify-between text-sm text-muted-foreground"
       >
         <span aria-live="polite">
-          {writing ? (
-            <>
-              {posts.length} {posts.length === 1 ? "post" : "posts"}
-            </>
-          ) : (
-            <>
-              Showing <AnimatedCounter value={filtered.length} /> of{" "}
-              {totalCount} items
-            </>
-          )}
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={writing ? "posts-count" : "credentials-count"}
+              className="inline-block"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+            >
+              {writing ? (
+                <>
+                  {posts.length} {posts.length === 1 ? "post" : "posts"}
+                </>
+              ) : (
+                <>
+                  Showing <AnimatedCounter value={filtered.length} /> of{" "}
+                  {totalCount} items
+                </>
+              )}
+            </motion.span>
+          </AnimatePresence>
         </span>
       </motion.div>
       <motion.div variants={fadeInUp}>
@@ -152,7 +205,7 @@ export default function Page() {
                     >
                       <WritingFlip
                         writing={writing}
-                        post={posts[index]}
+                        post={sortedPosts[index]}
                         index={index}
                       >
                         {item && (
