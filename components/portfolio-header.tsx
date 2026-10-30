@@ -153,7 +153,7 @@ export function PortfolioHeader({
             download="Sam_Katevatis_Resume.pdf"
             type="application/pdf"
             aria-label="Download resume as PDF"
-            className="group ml-1 inline-flex h-8 shrink-0 items-center gap-2 rounded-full border border-muted-foreground px-3 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="group ml-1 inline-flex h-8 shrink-0 items-center gap-2 rounded-md border border-muted-foreground px-3 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             <span>Resume</span>
             <FiDownload aria-hidden="true" className="size-4 motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:translate-y-0.5 motion-safe:group-focus-visible:translate-y-0.5" />
