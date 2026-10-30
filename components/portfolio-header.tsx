@@ -1,5 +1,5 @@
 import { useState, useEffect, type ReactElement } from "react"
-import { FiMail, FiCheck } from "react-icons/fi"
+import { FiMail, FiCheck, FiDownload } from "react-icons/fi"
 import { FaGithub, FaTwitter } from "react-icons/fa"
 import { SiBluesky } from "react-icons/si"
 import { motion, AnimatePresence } from "framer-motion"
@@ -131,22 +131,34 @@ export function PortfolioHeader({
             </motion.span>
           </AnimatePresence>
         </motion.button>
-        <CopyEmailButton email="sam@katevatis.com" />
-        <SocialLink
-          href="https://github.com/Samarinara"
-          label="@Samarinara"
-          icon={<FaGithub className="size-4 text-muted-foreground" />}
-        />
-        <SocialLink
-          href="https://samarinara.bsky.social"
-          label="@samarinara.bsky.social"
-          icon={<SiBluesky className="size-4 text-muted-foreground" />}
-        />
-        <SocialLink
-          href="https://x.com/_samarinara"
-          label="@_samarinara"
-          icon={<FaTwitter className="size-4 text-muted-foreground" />}
-        />
+        <div className="flex items-center gap-1">
+          <CopyEmailButton email="sam@katevatis.com" />
+          <SocialLink
+            href="https://github.com/Samarinara"
+            label="@Samarinara"
+            icon={<FaGithub className="size-4 text-muted-foreground" />}
+          />
+          <SocialLink
+            href="https://samarinara.bsky.social"
+            label="@samarinara.bsky.social"
+            icon={<SiBluesky className="size-4 text-muted-foreground" />}
+          />
+          <SocialLink
+            href="https://x.com/_samarinara"
+            label="@_samarinara"
+            icon={<FaTwitter className="size-4 text-muted-foreground" />}
+          />
+          <a
+            href="/Sam_Katevatis_Resume.pdf"
+            download="Sam_Katevatis_Resume.pdf"
+            type="application/pdf"
+            aria-label="Download resume as PDF"
+            className="group ml-1 inline-flex h-8 shrink-0 items-center gap-2 rounded-full px-3 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            <span>Resume</span>
+            <FiDownload aria-hidden="true" className="size-4 motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:translate-y-0.5 motion-safe:group-focus-visible:translate-y-0.5" />
+          </a>
+        </div>
       </div>
     </header>
   )
